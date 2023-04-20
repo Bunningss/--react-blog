@@ -1,0 +1,94 @@
+.navbar {
+  height: 90px;
+  border-bottom: 2px solid var(--primary);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.navbar .wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar .wrapper .col {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar .wrapper .hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  height: 30px;
+  width: 40px;
+  opacity: .8;
+}
+
+.navbar .wrapper .hamburger .line {
+  height: 3px;
+  width: 100%;
+  background-color: var(--primary);
+  border-radius: 30px;
+}
+
+.navbar .wrapper .hamburger .line:first-child {
+  width: 35%;
+}
+
+.navbar .wrapper .hamburger .line:nth-child(2) {
+  width: 90%;
+}
+
+.navbar .wrapper .hamburger .line:last-child {
+  width: 75%;
+}
+
+.navbar .wrapper .col .list {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar .wrapper .col .list a {
+  color: var(--primary);
+}
+
+.navbar .wrapper .col .list a .list_item {
+  text-transform: capitalize;
+}
+
+.navbar .wrapper .col .nav_logo_wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.navbar .wrapper .col .logo_image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+/* Mobile */
+@media screen and (max-width: 600px) {
+  .navbar .wrapper .col:first-child {
+    display: none;
+  }
+
+  .navbar .wrapper .col .logo_image {
+    width: 35%;
+  }
+
+  .navbar .wrapper .col:nth-child(3) {
+    display: none;
+  }
+
+  .navbar .wrapper .hamburger {
+    display: flex;
+  }
+  
+}

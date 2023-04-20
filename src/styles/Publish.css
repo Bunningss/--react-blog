@@ -1,0 +1,39 @@
+.publish {
+  height: calc(100vh - 90px);
+}
+
+.publish .wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.publish .wrapper .publish_form {
+  background-color: var(--content-bg);
+  /* height: 80%; */
+  width: 50%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 3px;
+}
+
+.publish .wrapper .publish_form .group {
+  width: 100%;
+}
+
+.publish .wrapper .publish_form .publish_input {
+  text-transform: capitalize;
+  margin: 5px 0;
+}
+
+@media screen and (max-width: 600px) {
+  .publish .wrapper .publish_form {
+    width: 100%;
+  }
+}

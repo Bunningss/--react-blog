@@ -1,0 +1,22 @@
+.input_group {
+  width: 100%;
+}
+
+.input_group .form_input {
+  margin: 5px 0 0px 0;
+}
+
+.input_group .form_input:invalid[focused="true"] {
+  border: 1px solid var(--highlight);
+}
+
+.input_group span {
+  display: none;
+  text-align: center;
+  margin: 3px 0 0 0;
+  color: var(--highlight);
+}
+
+.input_group .form_input:invalid[focused="true"] ~ span {
+  display: block;
+}

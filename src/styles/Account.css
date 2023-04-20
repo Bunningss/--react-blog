@@ -1,0 +1,52 @@
+.account {
+  height: calc(100vh - 90px);
+}
+
+.account .wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.account .wrapper .col {
+  flex: 1;
+  height: 80%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.account .wrapper .col .account_header {
+  text-transform: uppercase;
+  padding: 10px 0;
+}
+
+.account .wrapper .col .account_form {
+  background-color: var(--content-bg);
+  width: 100%;
+  height: 100%;
+  padding: 0 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  border-radius: 3px;
+}
+
+@media screen and (max-width: 600px) {
+  .account .wrapper {
+    display: block;
+  }
+
+  .account .wrapper .col {
+    padding: 10px 0;
+  }
+
+  .account .wrapper .col .account_form {
+    padding: 5px;
+  }
+}

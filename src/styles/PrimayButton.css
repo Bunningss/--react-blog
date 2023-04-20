@@ -1,0 +1,9 @@
+.primary_button {
+  background-color: var(--primary);
+  color: var(--content-bg);
+  cursor: pointer;
+}
+
+.primary_button::after {
+  background-color: var(--content-bg);
+}

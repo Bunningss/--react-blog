@@ -1,0 +1,64 @@
+.post {
+  margin: 50px 0;
+}
+
+.post .post_wrapper {
+  width: 100%;
+}
+
+.post .post_wrapper .post_image_container {
+  position: relative;
+  height: 500px;
+  width: 100%;
+}
+
+.post .post_wrapper .post_image_container .post_image {
+  object-fit: cover;
+}
+
+.post .post_wrapper .post_actual {
+  display: flex;
+}
+
+.post .post_wrapper .post_actual .col:nth-child(1) {
+  flex: 1;
+}
+
+.post .post_wrapper .post_actual .col:nth-child(2) {
+  flex: 3;
+}
+
+.post .post_wrapper .post_actual .col .post_header {
+  text-transform: capitalize;
+  padding: 20px 0 5px 0;
+}
+
+.post .post_wrapper .post_actual .col .post_refs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 5px 0 20px 0;
+}
+
+.post .post_wrapper .post_actual .col .post_refs a {
+  border-right: 2px solid var(--primary);
+  padding-right: 10px;
+  color: var(--secondary);
+}
+
+.post .post_wrapper .post_actual .col .post_refs a:last-child {
+  border-right: none;
+}
+
+.post .post_wrapper .post_actual .col .post_details {
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/* Mobile  */
+
+@media screen and (max-width: 600px) {
+  .post .post_wrapper .post_actual .col:nth-child(1) {
+    flex: 0;
+  }
+}

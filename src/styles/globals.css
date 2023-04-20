@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Itim&display=swap");
+
+:root {
+  --primary: #081f2c;
+  --secondary: grey;
+  --body-bg: #f4f5ff;
+  --content-bg: #ffffff;
+  --highlight: red;
+  --font-primary: "Itim", cursive;
+  --font-secondary: "Cinzel", serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-primary);
+}
+
+body {
+  background-color: var(--body-bg);
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.default {
+  padding: 0 5%;
+}
+
+.text_regular {
+  font-size: 18px;
+  color: var(--primary);
+}
+
+.header {
+  font-size: 34px;
+  color: var(--primary);
+  font-family: var(--font-secondary);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.input {
+  padding: 12px 5px;
+  width: 100%;
+  border: 1px solid var(--primary);
+  border-radius: 3px;
+  outline: none;
+  font-size: 18px;
+}
+
+.button {
+  text-transform: capitalize;
+  font-size: 18px;
+  width: 100%;
+  padding: 12px 5px;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+  margin: 10px 0;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover::after {
+  opacity: 1;
+  width: 10%;
+  border-radius: 32% 52% 51% 32% / 0% 46% 52% 0%;
+  z-index: 1;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 16px;
+  text-align: center;
+}
+
+.successMessage {
+  color: green;
+  font-size: 16px;
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .default {
+    padding: 0 2%;
+  }
+
+  .text_regular {
+    font-size: 16px;
+  }
+
+  .input {
+    font-size: 16px;
+  }
+
+  .button {
+    font-size: 16px;
+  }
+}
