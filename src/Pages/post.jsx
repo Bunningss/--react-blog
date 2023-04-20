@@ -1,40 +1,31 @@
-import Image from "next/image";
-import Link from "next/link";
-import Head from "next/head";
-import styles from "../../styles/PostPage.module.css";
-import demo from "../../../public/Images/landing.png";
+import "../styles/PostPage.css";
+import { Link } from "react-router-dom";
+import demo from "../Images/landing.png";
 
 const Post = () => {
   return (
     <>
-      <Head>
-        <title>Inner Thoughts</title>
-        <meta name="description" content="Blog Post Page" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <main>
-        <div className={`default ${styles.post}`}>
-          <div className={styles.post_wrapper}>
-            <div className={styles.post_image_container}>
-              <Image src={demo} alt="" className={styles.post_image} fill />
+        <div className="default post">
+          <div className="post_wrapper">
+            <div className="post_image_container">
+              <img src={demo} alt="" className="post_image" fill />
             </div>
-            <div className={styles.post_actual}>
-              <div className={styles.col}></div>
-              <div className={styles.col}>
-                {" "}
-                <h2 className={`header ${styles.post_header}`}>
+            <div className="post_actual">
+              <div className="col"></div>
+              <div className="col">
+                <h2 className="header post_header">
                   How much does business insurance cost?
                 </h2>
-                <div className={styles.post_refs}>
-                  <Link href="/">Nafiza Karim Riya</Link>
-                  <Link href="">Nafiza Karim Riya</Link>
-                  <Link href="">Nafiza Karim Riya</Link>
-                  <Link href="">Nafiza Karim Riya</Link>
-                  <Link href="">Nafiza Karim Riya</Link>
-                  <Link href="">Nafiza Karim Riya</Link>
+                <div className="post_refs">
+                  <Link to="/">Nafiza Karim Riya</Link>
+                  <Link to="">Nafiza Karim Riya</Link>
+                  <Link to="">Nafiza Karim Riya</Link>
+                  <Link to="">Nafiza Karim Riya</Link>
+                  <Link to="">Nafiza Karim Riya</Link>
+                  <Link to="">Nafiza Karim Riya</Link>
                 </div>
-                <p className={`text_regular ${styles.post_details}`}>
+                <p className="text_regular post_details">
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                   Rerum ea laboriosam eius omnis est at corrupti! Doloribus
                   mollitia repellat delectus cum cumque, iste molestiae

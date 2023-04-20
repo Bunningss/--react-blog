@@ -4,7 +4,7 @@ import "../styles/ArticleCard.css";
 const ArticleCard = ({ post }) => {
   return (
     <div className="article_card">
-      <Link href={`/post/${post._id}`}>
+      <Link to={`/article/${post._id}`}>
         <div className="image_container">
           <img
             src={post.Image}

@@ -1,28 +1,21 @@
-import styles from "../styles/Publish.module.css";
-import Head from "next/head";
-import FormInput from "@/Components/FormInput";
-import PrimayButton from "@/Components/PrimayButton";
+import "../styles/Publish.css";
+import FormInput from "../Components/FormInput";
+import PrimayButton from "../Components/PrimayButton";
 
 const Publish = () => {
   return (
     <>
-      <Head>
-        <title>Inner Thoughts - Publish An Article</title>
-        <meta name="description" content="Write an article" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main className={`default ${styles.publish}`}>
-        <div className={styles.wrapper}>
-          <form className={styles.publish_form}>
-            <div className={styles.group}>
-              <label htmlFor="media" className={styles.publish_label}>
+      <main className="default publish">
+        <div className="wrapper">
+          <form className="publish_form">
+            <div className="group">
+              <label htmlFor="media" className="publish_label">
                 Choose Media
               </label>
               <input
                 type="file"
                 name="Image"
-                className={`input ${styles.publish_input}`}
+                className="input publish_input"
                 required
               />
             </div>
@@ -46,14 +39,14 @@ const Publish = () => {
                 fieldType: "TEXTAREA",
               }}
             />
-            <div className={styles.group}>
-              <label htmlFor="Category" className={styles.publish_label}>
+            <div className="group">
+              <label htmlFor="Category" className="publish_label">
                 Select category
               </label>
               <select
                 name="Category"
                 id="category"
-                className={`input ${styles.publish_input}`}
+                className="input publish_input"
                 required
               >
                 <option value="">category</option>

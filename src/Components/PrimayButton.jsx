@@ -1,7 +1,7 @@
-import styles from "../styles/PrimayButton.module.css";
+import "../styles/PrimayButton.css";
 
 const PrimayButton = ({ text }) => {
-  return <button className={`button ${styles.primary_button}`}>{text}</button>;
+  return <button className="button primary_button">{text}</button>;
 };
 
 export default PrimayButton;

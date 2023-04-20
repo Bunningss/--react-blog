@@ -8,31 +8,31 @@ const Navbar = () => {
       <div className="wrapper">
         <div className="col">
           <ul className="list">
-            <Link href="/articles">
+            <Link to="/articles">
               <li className="text_regular list_item">all articles</li>
             </Link>
-            <Link href="/authors">
+            <Link to="/authors">
               <li className="text_regular list_item">authors</li>
             </Link>
-            <Link href="/cookbook">
+            <Link to="/cookbook">
               <li className="text_regular list_item">cook book</li>
             </Link>
           </ul>
         </div>
         <div className="col">
-          <Link href="/" className="nav_logo_wrapper">
+          <Link to="/" className="nav_logo_wrapper">
             <img src={logo} alt="" className="logo_image" />
           </Link>
         </div>
         <div className="col">
           <ul className="list">
-            <Link href="/account">
+            <Link to="/account">
               <li className="text_regular list_item">my account</li>
             </Link>
-            <Link href="/publish">
+            <Link to="/publish">
               <li className="text_regular list_item">publish</li>
             </Link>
-            <Link href="/promotions">
+            <Link to="/promotions">
               <li className="text_regular list_item">promotions</li>
             </Link>
           </ul>

@@ -1,8 +1,7 @@
-import styles from "../styles/Account.module.css";
-import Head from "next/head";
+import "../styles/Account.css";
 import { useState } from "react";
-import FormInput from "@/Components/FormInput";
-import PrimayButton from "@/Components/PrimayButton";
+import FormInput from "../Components/FormInput";
+import PrimayButton from "../Components/PrimayButton";
 
 const Account = () => {
   const [values, setValues] = useState({
@@ -99,26 +98,20 @@ const Account = () => {
 
   return (
     <>
-      <Head>
-        <title>Inner Thoughts - Login or Register</title>
-        <meta name="description" content="Blog posts" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main className={`default ${styles.account}`}>
-        <div className={styles.wrapper}>
-          <div className={styles.col}>
-            <h2 className={`header ${styles.account_header}`}>Login</h2>
-            <form className={styles.account_form} onSubmit={handleLogin}>
+      <main className="default account">
+        <div className="wrapper">
+          <div className="col">
+            <h2 className="header account_header">Login</h2>
+            <form className="account_form" onSubmit={handleLogin}>
               {loginInputs.map((input, indx) => (
                 <FormInput key={indx} input={input} />
               ))}
               <PrimayButton text={"Login"} />
             </form>
           </div>
-          <div className={styles.col}>
-            <h2 className={`header ${styles.account_header}`}>register</h2>
-            <form className={styles.account_form}>
+          <div className="col">
+            <h2 className="header account_header">register</h2>
+            <form className="account_form">
               {registerInputs.map((input, indx) => (
                 <FormInput key={indx} input={input} />
               ))}
