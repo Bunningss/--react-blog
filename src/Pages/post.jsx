@@ -1,15 +1,17 @@
 import "../styles/PostPage.css";
 import { Link } from "react-router-dom";
 import demo from "../Images/landing.png";
+import { useEffect } from "react";
 
 const Post = () => {
+  useEffect(() => {});
   return (
     <>
       <main>
         <div className="default post">
           <div className="post_wrapper">
             <div className="post_image_container">
-              <img src={demo} alt="" className="post_image" fill />
+              <img src={demo} alt="" className="post_image" />
             </div>
             <div className="post_actual">
               <div className="col"></div>

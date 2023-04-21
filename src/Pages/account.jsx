@@ -1,21 +1,21 @@
 import "../styles/Account.css";
 import { useState } from "react";
+import { publicRequest } from "../utils/apiCalls";
+import { useDispatch } from "react-redux";
+import { loginStart, loginSuccess, loginFailure } from "../redux/userSlice";
 import FormInput from "../Components/FormInput";
 import PrimayButton from "../Components/PrimayButton";
+import { useNavigate } from "react-router-dom";
 
 const Account = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     Name: "",
     Email: "",
     Password: "",
     ConfirmPassword: "",
   });
-
-  const [loginValues, setLoginValues] = useState({
-    Email: "",
-    Passord: "",
-  });
-
   const registerInputs = [
     {
       label: "Name",
@@ -83,17 +83,32 @@ const Account = () => {
     },
   ];
 
+  const onChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
     const data = new FormData(e.target);
     const formData = Object.fromEntries(data.entries());
+    dispatch(loginStart());
+    try {
+      const res = await publicRequest.post("/auth/login", formData);
+      dispatch(loginSuccess(res.data));
+      navigate("/");
+    } catch (err) {
+      dispatch(loginFailure());
+    }
+  };
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
 
     try {
-      // Login Logic
-    } catch (err) {
-      console.log(err);
-    }
+      await publicRequest.post("/auth/register", values);
+      navigate("/");
+    } catch (err) {}
   };
 
   return (
@@ -111,9 +126,9 @@ const Account = () => {
           </div>
           <div className="col">
             <h2 className="header account_header">register</h2>
-            <form className="account_form">
+            <form className="account_form" onSubmit={handleRegister}>
               {registerInputs.map((input, indx) => (
-                <FormInput key={indx} input={input} />
+                <FormInput key={indx} input={input} handleChange={onChange} />
               ))}
               <PrimayButton text={"Register"} />
             </form>

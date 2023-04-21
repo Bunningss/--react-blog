@@ -4,7 +4,7 @@ import landing from "../Images/landing.png";
 const Hero = () => {
   return (
     <div className="hero">
-      <img src={landing} alt="" fill className="hero_image" />
+      <img src={landing} alt="" className="hero_image" />
     </div>
   );
 };

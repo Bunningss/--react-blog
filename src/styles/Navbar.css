@@ -1,6 +1,6 @@
 .navbar {
   height: 90px;
-  border-bottom: 2px solid var(--primary);
+  border-bottom: 1px solid var(--primary);
   user-select: none;
   -webkit-user-select: none;
 }
@@ -24,7 +24,7 @@
   gap: 5px;
   height: 30px;
   width: 40px;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .navbar .wrapper .hamburger .line {
@@ -90,5 +90,4 @@
   .navbar .wrapper .hamburger {
     display: flex;
   }
-  
 }

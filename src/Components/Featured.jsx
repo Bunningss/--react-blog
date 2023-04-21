@@ -2,7 +2,7 @@ import "../styles/Featured.css";
 import { Link } from "react-router-dom";
 import { newPosts } from "../static";
 import arrow from "../Images/icons/arrow.png";
-import Post from "./ArticleCard";
+import ArticleCard from "./ArticleCard";
 
 const Featured = () => {
   return (
@@ -24,8 +24,8 @@ const Featured = () => {
         </div>
       </div>
       <div className="posts">
-        {newPosts.map((post, indx) => (
-          <Post key={indx} post={post} />
+        {newPosts.map((article, indx) => (
+          <ArticleCard key={indx} article={article} />
         ))}
       </div>
     </div>

@@ -1,14 +1,23 @@
 import "../styles/Articles.css";
-import { categories, temPosts } from "../static";
-import Post from "../Components/ArticleCard";
+import { useEffect, useState } from "react";
+import ArticleCard from "../Components/ArticleCard";
+import { publicRequest } from "../utils/apiCalls";
 
 const Articles = () => {
+  const [articles, setArticles] = useState([]);
+  useEffect(() => {
+    const getArticles = async () => {
+      const res = await publicRequest.get("/articles");
+      setArticles(res.data);
+    };
+    getArticles();
+  }, []);
   return (
     <>
       <main className="default all_posts">
         <div className="wrapper">
           {/* Category */}
-          <div className="col">
+          {/* <div className="col">
             <div className="filter">
               <h2 className="header filter_header">Filter posts</h2>
               <div className="filter_content">
@@ -45,13 +54,11 @@ const Articles = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           {/* All Posts */}
-          <div className="col">
-            {temPosts.map((post, indx) => (
-              <Post key={indx} post={post} />
-            ))}
-          </div>
+          {articles.map((article, indx) => (
+            <ArticleCard key={indx} article={article} />
+          ))}
         </div>
       </main>
     </>

@@ -1,54 +1,12 @@
 .all_posts .wrapper {
-  display: flex;
-  margin: 15px 0;
-}
-
-.all_posts .wrapper .col {
-  flex: 1;
-  padding: 5px;
-  position: relative;
-}
-
-.all_posts .wrapper .col .filter {
-  position: sticky;
-  top: 0;
-}
-
-.all_posts .wrapper .col .filter .filter_header {
-  text-transform: uppercase;
-  text-align: center;
-  padding: 0 0 10px 0;
-  border-bottom: 1px solid var(--primary);
-}
-
-.all_posts .wrapper .col .filter .filter_content .group {
-  margin: 10px 0;
-  flex: 1;
-}
-
-.all_posts .wrapper .col .filter .filter_content .group .filter_text {
-  text-transform: capitalize;
-  padding: 0 5px;
-}
-
-.all_posts .wrapper .col .filter .filter_content .group .filter_input {
-  margin: 5px 0 10px 0;
-  text-transform: capitalize;
-}
-
-.all_posts .wrapper .col:nth-child(2) {
-  flex: 4;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
+  margin: 15px 0;
 }
 
 @media screen and (max-width: 600px) {
-  .all_posts .wrapper .col:nth-child(1) {
-    display: none;
-  }
-
-  .all_posts .wrapper .col:nth-child(2) {
+  .all_posts .wrapper {
     grid-template-columns: repeat(1, 1fr);
     gap: 15px;
   }
