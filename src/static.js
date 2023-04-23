@@ -1,7 +1,15 @@
-export const colOne = [
+export const navLinks = [
   {
-    href: "/allposts",
+    href: "/account",
+    name: "login",
+  },
+  {
+    href: "/articles",
     name: "all posts",
+  },
+  {
+    href: "/publish",
+    name: "Publish an article",
   },
   {
     href: "",
@@ -10,17 +18,6 @@ export const colOne = [
   {
     href: "",
     name: "cook book",
-  },
-];
-
-export const colTwo = [
-  {
-    href: "/account",
-    name: "login",
-  },
-  {
-    href: "/publish",
-    name: "become an author",
   },
   {
     href: "",
