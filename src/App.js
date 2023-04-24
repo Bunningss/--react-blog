@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // Components
 import Navbar from "./Components/Navbar";
 import ComingSoon from "./Components/ComingSoon";
+import Navigator from "./Components/Navigator";
 
 // Pages
 import Index from "./Pages/index";
@@ -12,7 +13,6 @@ import Articles from "./Pages/articles";
 import Account from "./Pages/account";
 import Publish from "./Pages/publish";
 import Post from "./Pages/post";
-import Navigator from "./Components/Navigator";
 
 function App() {
   // Toggle navbar popup

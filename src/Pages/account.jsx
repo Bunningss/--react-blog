@@ -16,6 +16,9 @@ const Account = () => {
     Password: "",
     ConfirmPassword: "",
   });
+  const [errorMessage, setErrorMessage] = useState("");
+  const [registrationErrorMessage, setRegistrationErrorMessage] = useState("");
+
   const registerInputs = [
     {
       label: "Name",
@@ -68,7 +71,7 @@ const Account = () => {
       placeholder: "Enter Your Email",
       errorMessage: "Please enter a valid email",
       required: true,
-      minLength: 5,
+      minLength: 8,
       maxLength: 80,
     },
     {
@@ -94,11 +97,13 @@ const Account = () => {
     const formData = Object.fromEntries(data.entries());
     dispatch(loginStart());
     try {
+      setErrorMessage("");
       const res = await publicRequest.post("/auth/login", formData);
       dispatch(loginSuccess(res.data));
       navigate("/");
       window.location.reload();
     } catch (err) {
+      setErrorMessage(err.response.data);
       dispatch(loginFailure());
     }
   };
@@ -106,9 +111,12 @@ const Account = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
+      setRegistrationErrorMessage("");
       await publicRequest.post("/auth/register", values);
       navigate("/");
-    } catch (err) {}
+    } catch (err) {
+      setRegistrationErrorMessage(err.response.data);
+    }
   };
 
   return (
@@ -121,6 +129,9 @@ const Account = () => {
               {loginInputs.map((input, indx) => (
                 <FormInput key={indx} input={input} />
               ))}
+              {errorMessage && (
+                <p className="text_regular errorMessage">{errorMessage}</p>
+              )}
               <PrimayButton text={"Login"} />
             </form>
           </div>
@@ -130,6 +141,11 @@ const Account = () => {
               {registerInputs.map((input, indx) => (
                 <FormInput key={indx} input={input} handleChange={onChange} />
               ))}
+              {registrationErrorMessage && (
+                <p className="text_regular errorMessage">
+                  {registrationErrorMessage}
+                </p>
+              )}
               <PrimayButton text={"Register"} />
             </form>
           </div>

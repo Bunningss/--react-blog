@@ -56,7 +56,7 @@ const Publish = () => {
             setProgress("Upload stopped! Please retry.");
             break;
           case "running":
-            setProgress("Upload Started...");
+            // setProgress("Upload Started...");
             break;
           default:
             break;
@@ -107,6 +107,7 @@ const Publish = () => {
                 cols: "30",
                 rows: "10",
                 placeholder: "Enter Article",
+                label: "Enter article",
                 required: true,
                 errorMessage: "Article Description is required",
                 fieldType: "TEXTAREA",

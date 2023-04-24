@@ -2,7 +2,7 @@ import "../styles/Featured.css";
 import { Link } from "react-router-dom";
 import { publicRequest } from "../utils/apiCalls";
 import { useEffect, useState } from "react";
-import arrow from "../Images/icons/arrow.png";
+import arrow from "../Images/icons/arrow.webp";
 import ArticleCard from "./ArticleCard";
 
 const Featured = () => {
@@ -24,7 +24,7 @@ const Featured = () => {
           </p>
         </div>
         <div className="col">
-          <h2 className="header featured_header">featured posts</h2>
+          <h2 className="header featured_header">Most Popular</h2>
         </div>
         <div className="col">
           <Link to="/articles" className="text_regular featured_text">

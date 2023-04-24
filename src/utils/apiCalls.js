@@ -10,3 +10,8 @@ export const publicRequest = axios.create({
   baseURL: base_url,
   headers: { token: `Bearer ${token}` },
 });
+
+// Verify Session
+// const verifySession = () => {
+//   const decoded = jwt_decode(token);
+// };

@@ -1,7 +1,7 @@
 import "../styles/Navbar.css";
 import { Link } from "react-router-dom";
-import logo from "../Images/logo.png";
-import dropdown from "../Images/dropdown.png";
+import logo from "../Images/logo.webp";
+import dropdown from "../Images/icons/dropdown.webp";
 
 const Navbar = ({ active, setActive }) => {
   return (

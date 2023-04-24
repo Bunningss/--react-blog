@@ -1,5 +1,5 @@
 import "../styles/Hero.css";
-import landing from "../Images/landing.png";
+import landing from "../Images/landing.webp";
 
 const Hero = () => {
   return (
