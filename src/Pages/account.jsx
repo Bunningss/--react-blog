@@ -97,6 +97,7 @@ const Account = () => {
       const res = await publicRequest.post("/auth/login", formData);
       dispatch(loginSuccess(res.data));
       navigate("/");
+      window.location.reload();
     } catch (err) {
       dispatch(loginFailure());
     }
@@ -104,7 +105,6 @@ const Account = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-
     try {
       await publicRequest.post("/auth/register", values);
       navigate("/");

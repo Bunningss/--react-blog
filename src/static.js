@@ -1,11 +1,11 @@
 export const navLinks = [
   {
     href: "/account",
-    name: "login",
+    name: "my account",
   },
   {
     href: "/articles",
-    name: "all posts",
+    name: "all articles",
   },
   {
     href: "/publish",

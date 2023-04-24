@@ -1,10 +1,20 @@
 import "../styles/Featured.css";
 import { Link } from "react-router-dom";
-import { newPosts } from "../static";
+import { publicRequest } from "../utils/apiCalls";
+import { useEffect, useState } from "react";
 import arrow from "../Images/icons/arrow.png";
 import ArticleCard from "./ArticleCard";
 
 const Featured = () => {
+  const [featured, setFeatured] = useState([]);
+  useEffect(() => {
+    const getFeatured = async () => {
+      const res = await publicRequest.get("/articles?limit=4");
+      setFeatured(res.data);
+    };
+    getFeatured();
+  }, []);
+
   return (
     <div className="featured">
       <div className="heading">
@@ -24,7 +34,7 @@ const Featured = () => {
         </div>
       </div>
       <div className="posts">
-        {newPosts.map((article, indx) => (
+        {featured.map((article, indx) => (
           <ArticleCard key={indx} article={article} />
         ))}
       </div>

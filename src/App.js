@@ -39,7 +39,7 @@ function App() {
         <Route exact path="/" element={<Index />} />
         <Route path="/articles" element={<Articles />} />
         {!user && <Route path="/account" element={<Account />} />}
-        <Route path="/publish" element={<Publish />} />
+        {user && <Route path="/publish" element={<Publish />} />}
         <Route path="/article/:id" element={<Post />} />
       </Routes>
     </BrowserRouter>
