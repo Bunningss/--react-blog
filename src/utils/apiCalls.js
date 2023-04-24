@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const base_url = "https://innthtapi.herokuapp.com/";
+const base_url = "https://innthtapi.herokuapp.com/api/v1/";
 
 const user = JSON.parse(localStorage.getItem("persist:root"))?.user;
 const currentUser = user && JSON.parse(user).currentUser;

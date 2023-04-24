@@ -27,7 +27,7 @@ const Featured = () => {
           <h2 className="header featured_header">featured posts</h2>
         </div>
         <div className="col">
-          <Link href="/articles" className="text_regular featured_text">
+          <Link to="/articles" className="text_regular featured_text">
             show me everything
             <img src={arrow} alt="" className="featured_icon" />
           </Link>
