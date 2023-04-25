@@ -67,7 +67,15 @@ const Article = () => {
                 {userName === article?.AuthorName || admin ? (
                   <>
                     {/* <span>...</span> */}
-                    <span>Modify</span>
+                    <SecondaryButton
+                      text={"modify"}
+                      btn_styles={{
+                        ...secondary_button,
+                        color: "var(--primary)",
+                        backgroundColor: "var(--content-bg)",
+                        fontSize: "14px",
+                      }}
+                    />
                     <SecondaryButton
                       text={"delete"}
                       btn_styles={{

@@ -50,18 +50,12 @@
   font-size: 14px;
 }
 
-.post .post_wrapper .post_actual .col .post_refs > a,
-span {
+.post .post_wrapper .post_actual .col .post_refs > a {
   text-transform: uppercase;
   border-right: 2px solid var(--primary);
   border-right: 2px solid var(--primary);
   padding-right: 10px;
   color: var(--secondary);
-}
-
-.post .post_wrapper .post_actual .col .post_refs span {
-  color: var(--primary);
-  cursor: pointer;
 }
 
 .post .post_wrapper .post_actual .col .post_details {
