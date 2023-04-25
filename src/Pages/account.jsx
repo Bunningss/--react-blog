@@ -95,7 +95,7 @@ const Account = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log("object");
+
     setStatus(true);
     const data = new FormData(e.target);
     const formData = Object.fromEntries(data.entries());

@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -16,25 +15,13 @@ import Publish from "./Pages/publish";
 import Article from "./Pages/article";
 
 function App() {
-  // Toggle navbar popup
-  const [active, setActive] = useState(false);
-
-  // Stop scroll when popup active
-  useEffect(() => {
-    if (active) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflowY = "scroll";
-    }
-  }, [active]);
-
   // Fetch logged in user
   const user = useSelector((state) => state.user?.currentUser?.userData);
 
   return (
     <BrowserRouter>
-      <Navbar active={active} setActive={setActive} />
-      {active && <Menu setActive={setActive} />}
+      <Navbar />
+      <Menu />
       <Routes>
         <Route exact path="*" element={<ComingSoon />} />
         <Route exact path="/" element={<Index />} />

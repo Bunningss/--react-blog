@@ -7,6 +7,13 @@ import logo from "../Images/logo.webp";
 import SecondaryButton from "./SecondaryButton";
 import ListItem from "../Components/ListItem";
 
+export const list_item_styles = {
+  color: "var(--content-bg)",
+  fontSize: "14px",
+  textTransform: "uppercase",
+  padding: "5px",
+};
+
 const Navbar = ({ active, setActive }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -15,20 +22,13 @@ const Navbar = ({ active, setActive }) => {
   const secondary_button = {
     height: "100%",
     padding: "0 20px",
-    backgroundColor: " var(--body-bg)",
+    backgroundColor: " var(--content-bg)",
     border: "none",
     outline: "none",
     color: "var(--primary)",
     textTransform: "uppercase",
     borderRadius: "3px",
     cursor: "pointer",
-  };
-
-  const list_item_styles = {
-    color: "var(--content-bg)",
-    fontSize: "14px",
-    textTransform: "uppercase",
-    padding: "5px",
   };
 
   // End session
