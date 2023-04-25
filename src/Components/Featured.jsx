@@ -17,7 +17,7 @@ const Featured = () => {
 
   return (
     <div className="featured">
-      <div className="heading">
+      <div className="heading default_padding">
         <div className="col">
           <p className="text_regular featured_text">
             Show your inner writer <br /> make an impression
@@ -33,7 +33,7 @@ const Featured = () => {
           </Link>
         </div>
       </div>
-      <div className="posts">
+      <div className="posts default_padding">
         {featured.map((article, indx) => (
           <ArticleCard key={indx} article={article} />
         ))}

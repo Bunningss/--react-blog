@@ -76,7 +76,7 @@ const Publish = () => {
 
   return (
     <>
-      <main className="default publish">
+      <main className="default_padding fade_in publish">
         <div className="wrapper">
           <form className="publish_form" onSubmit={handleSubmit}>
             <div className="group">

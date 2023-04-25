@@ -30,7 +30,7 @@ const Article = () => {
           setSelectedImage={setSelectedImage}
         />
       )}
-      <div className="default post">
+      <div className="default_padding fade_in post">
         <div className="post_wrapper">
           <div
             className="post_image_container"

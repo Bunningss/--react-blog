@@ -3,7 +3,7 @@ import "../styles/ArticleCard.css";
 
 const ArticleCard = ({ article }) => {
   return (
-    <div className="article_card">
+    <div className="article_card fade_in">
       <Link to={`/article/${article._id}`}>
         <div className="image_container">
           <img

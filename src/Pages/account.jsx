@@ -16,6 +16,7 @@ const Account = () => {
     Password: "",
     ConfirmPassword: "",
   });
+  const [status, setStatus] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [registrationErrorMessage, setRegistrationErrorMessage] = useState("");
 
@@ -94,7 +95,8 @@ const Account = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+    console.log("object");
+    setStatus(true);
     const data = new FormData(e.target);
     const formData = Object.fromEntries(data.entries());
     dispatch(loginStart());
@@ -105,6 +107,7 @@ const Account = () => {
       navigate("/");
       window.location.reload();
     } catch (err) {
+      setStatus(false);
       setErrorMessage(err.response.data);
       dispatch(loginFailure());
     }
@@ -112,18 +115,20 @@ const Account = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setStatus(true);
     try {
       setRegistrationErrorMessage("");
       await publicRequest.post("/auth/register", values);
       navigate("/");
     } catch (err) {
+      setStatus(false);
       setRegistrationErrorMessage(err.response.data);
     }
   };
 
   return (
     <>
-      <main className="default account">
+      <main className="default fade_in account">
         <div className="wrapper">
           <div className="col">
             <h2 className="header account_header">Login</h2>
@@ -134,7 +139,7 @@ const Account = () => {
               {errorMessage && (
                 <p className="text_regular errorMessage">{errorMessage}</p>
               )}
-              <PrimayButton text={"Login"} />
+              <PrimayButton text={"Login"} status={status} />
             </form>
           </div>
           <div className="col">
@@ -148,7 +153,7 @@ const Account = () => {
                   {registrationErrorMessage}
                 </p>
               )}
-              <PrimayButton text={"Register"} />
+              <PrimayButton text={"Register"} status={status} />
             </form>
           </div>
         </div>

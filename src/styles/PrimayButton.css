@@ -1,9 +1,39 @@
 .primary_button {
   background-color: var(--primary);
-  color: var(--content-bg);
   cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
-.primary_button::after {
-  background-color: var(--content-bg);
+.primary_button:disabled {
+  cursor: wait;
+}
+
+.primary_button:hover {
+  opacity: 0.8;
+}
+
+.button_text {
+  color: var(--content-bg);
+}
+
+.button_active .button_text {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.button_active::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--content-bg);
+  animation: loading 1s infinite;
 }

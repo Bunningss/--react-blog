@@ -1,27 +1,23 @@
 export const navLinks = [
   {
-    href: "/account",
-    name: "my account",
+    href: "/profile",
+    name: "profile",
   },
   {
     href: "/articles",
-    name: "all articles",
+    name: " articles",
   },
   {
     href: "/publish",
-    name: "Publish an article",
+    name: "Write",
   },
   {
-    href: "",
+    href: "/authors",
     name: "authors",
   },
   {
-    href: "",
-    name: "cook book",
-  },
-  {
-    href: "",
-    name: "promotions",
+    href: "/promote",
+    name: "advertise",
   },
 ];
 

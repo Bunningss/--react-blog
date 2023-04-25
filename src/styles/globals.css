@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Itim&display=swap");
 
 :root {
-  --primary: #081f2c;
+  --primary: #3e3e3e;
   --secondary: grey;
   --body-bg: #ebebeb;
   --content-bg: #ffffff;
@@ -30,8 +30,8 @@ a {
   text-decoration: none;
 }
 
-.default {
-  padding: 0 5%;
+.default_padding {
+  padding: 0 1%;
 }
 
 .text_regular {
@@ -71,24 +71,6 @@ a {
   -webkit-user-select: none;
 }
 
-.button::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
-}
-
-.button:hover::after {
-  opacity: 1;
-  width: 10%;
-  border-radius: 32% 52% 51% 32% / 0% 46% 52% 0%;
-  z-index: 1;
-}
-
 .errorMessage {
   color: var(--highlight);
   font-size: 16px;
@@ -101,11 +83,12 @@ a {
   text-align: center;
 }
 
-@media screen and (max-width: 600px) {
-  .default {
-    padding: 0 2%;
-  }
+.fade_in {
+  -webkit-animation: fade-in 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
 
+@media screen and (max-width: 600px) {
   .text_regular {
     font-size: 16px;
   }
@@ -116,5 +99,41 @@ a {
 
   .button {
     font-size: 16px;
+  }
+}
+
+/* Animations */
+
+@-webkit-keyframes fade-in {
+  0% {
+    -webkit-transform: translateZ(-80px);
+    transform: translateZ(-80px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    -webkit-transform: translateZ(-80px);
+    transform: translateZ(-80px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
   }
 }
