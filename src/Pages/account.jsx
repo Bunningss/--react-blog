@@ -45,10 +45,12 @@ const Account = () => {
       name: "Password",
       type: "password",
       placeholder: "Enter Your Password",
-      errorMessage: "Password must be 8+ characters",
+      errorMessage:
+        "Password must contain at least eight characters, one uppercase letter, one lowercase letter and one number",
       required: true,
       minLength: 8,
       maxLength: 256,
+      pattern: "^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]{8,}$",
     },
     {
       label: "Confirm Password",
