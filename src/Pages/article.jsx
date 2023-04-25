@@ -62,7 +62,7 @@ const Article = () => {
               <h2 className="header post_header">{article?.Title}</h2>
               <div className="post_refs">
                 <Link to="/">{article?.Category}</Link>
-                {/* <Link to="">{article?.AuthorName}</Link> */}
+                <Link to="">{article?.AuthorName}</Link>
                 <span>{new Date(article?.createdAt).toDateString()}</span>
                 {userName === article?.AuthorName || admin ? (
                   <>

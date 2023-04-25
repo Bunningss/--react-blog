@@ -98,10 +98,14 @@ const Account = () => {
     setStatus(true);
     const data = new FormData(e.target);
     const formData = Object.fromEntries(data.entries());
+    const { Email, Password } = formData;
     dispatch(loginStart());
     try {
       setErrorMessage("");
-      const res = await publicRequest.post("/auth/login", formData);
+      const res = await publicRequest.post("/auth/login", {
+        Email: Email.toLowerCase(),
+        Password,
+      });
       dispatch(loginSuccess(res.data));
       navigate("/");
       window.location.reload();
