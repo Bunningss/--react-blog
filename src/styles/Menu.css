@@ -1,6 +1,7 @@
 .menu {
   height: 35px;
   background-color: var(--primary);
+  border-top: 1px solid var(--body-bg);
   display: none;
   justify-content: center;
   align-items: center;
@@ -9,6 +10,9 @@
 .menu .menu_list {
   display: flex;
   gap: 10px;
+  overflow: scroll;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 @media screen and (max-width: 600px) {

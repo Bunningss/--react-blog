@@ -14,26 +14,27 @@ export const list_item_styles = {
   padding: "5px",
 };
 
+export const secondary_button = {
+  height: "100%",
+  padding: "0 20px",
+  backgroundColor: " var(--content-bg)",
+  border: "none",
+  outline: "none",
+  color: "var(--primary)",
+  textTransform: "uppercase",
+  borderRadius: "3px",
+  cursor: "pointer",
+};
+
 const Navbar = ({ active, setActive }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user?.currentUser);
 
-  const secondary_button = {
-    height: "100%",
-    padding: "0 20px",
-    backgroundColor: " var(--content-bg)",
-    border: "none",
-    outline: "none",
-    color: "var(--primary)",
-    textTransform: "uppercase",
-    borderRadius: "3px",
-    cursor: "pointer",
-  };
-
   // End session
   const handleLogout = () => {
     dispatch(logout());
+    window.location.reload();
   };
 
   // Navigate to auth page

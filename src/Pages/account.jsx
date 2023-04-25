@@ -51,7 +51,6 @@ const Account = () => {
       required: true,
       minLength: 8,
       maxLength: 256,
-      pattern: "^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]{8,}$",
     },
     {
       label: "Confirm Password",

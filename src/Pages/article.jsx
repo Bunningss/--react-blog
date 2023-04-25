@@ -1,16 +1,21 @@
 import "../styles/Article.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { publicRequest } from "../utils/apiCalls";
 import ImageModal from "../Components/ImageModal";
+import SecondaryButton from "../Components/SecondaryButton";
+import { secondary_button } from "../Components/Navbar";
 
 const Article = () => {
   const [article, setArticle] = useState();
   const [selectedImage, setSelectedImage] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
   let id = location.pathname?.split("/")[2];
-  const user = useSelector((state) => state.user?.currentUser?.userData);
+  const user = useSelector((state) => state.user?.currentUser);
+  const userName = user && user?.userData?.Name;
+  const admin = user && user?.userData?.IsAdmin;
 
   useEffect(() => {
     try {
@@ -24,6 +29,17 @@ const Article = () => {
     }
   }, [id]);
 
+  const handleDelete = async (e) => {
+    e.preventDefault();
+
+    try {
+      await publicRequest.post(`/articles/delete/${id}`);
+      navigate("/articles");
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+  // console.log(admin);
   return (
     <>
       {selectedImage && (
@@ -41,20 +57,29 @@ const Article = () => {
             <img src={article?.Image} alt="" className="post_image" />
           </div>
           <div className="post_actual">
-            <div className="col">hi</div>
+            <div className="col"></div>
             <div className="col">
               <h2 className="header post_header">{article?.Title}</h2>
               <div className="post_refs">
                 <Link to="/">{article?.Category}</Link>
+                {/* <Link to="">{article?.AuthorName}</Link> */}
                 <span>{new Date(article?.createdAt).toDateString()}</span>
-                <Link to="">{article?.AuthorName}</Link>
-                {user.Name === article?.AuthorName && (
+                {userName === article?.AuthorName || admin ? (
                   <>
-                    <Link to="">Modify</Link>
-                    <Link to="">Delete</Link>
-                    <Link to="">...</Link>
+                    {/* <span>...</span> */}
+                    <span>Modify</span>
+                    <SecondaryButton
+                      text={"delete"}
+                      btn_styles={{
+                        ...secondary_button,
+                        color: "var(--body-bg)",
+                        backgroundColor: "red",
+                        fontSize: "14px",
+                      }}
+                      handleClick={handleDelete}
+                    />
                   </>
-                )}
+                ) : null}
               </div>
               <p className="text_regular post_details">{article?.Article}</p>
             </div>
