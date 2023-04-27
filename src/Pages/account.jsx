@@ -103,7 +103,7 @@ const Account = () => {
     try {
       setErrorMessage("");
       const res = await publicRequest.post("/auth/login", {
-        Email: Email.toLowerCase(),
+        Email,
         Password,
       });
       dispatch(loginSuccess(res.data));

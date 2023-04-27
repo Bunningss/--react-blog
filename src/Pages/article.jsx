@@ -33,7 +33,9 @@ const Article = () => {
     e.preventDefault();
 
     try {
-      await publicRequest.post(`/articles/delete/${id}`);
+      await publicRequest.delete(
+        `/articles/delete/${id}?userId=${user?.userData?._id}`
+      );
       navigate("/articles");
     } catch (err) {
       console.log(err.message);

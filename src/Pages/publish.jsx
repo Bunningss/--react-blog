@@ -16,6 +16,7 @@ const Publish = () => {
   const navigate = useNavigate();
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState("");
+  const [status, setStatus] = useState(false);
   const [values, setValues] = useState({
     Title: "",
     Article: "",
@@ -28,11 +29,13 @@ const Publish = () => {
 
   const createArticle = async (data) => {
     try {
+      setStatus(true);
       await publicRequest.post("/articles/create", data.data);
       navigate("/articles");
       setProgress("Article Generated");
     } catch (err) {
-      console.log(err.message);
+      setStatus(false);
+      setProgress(err.response.data);
     }
   };
 
@@ -51,9 +54,11 @@ const Publish = () => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setProgress(`File upload at ${Math.round(progress)}%`);
+        setStatus(true);
         switch (snapshot.state) {
           case "paused":
             setProgress("Upload stopped! Please retry.");
+            setStatus(false);
             break;
           case "running":
             // setProgress("Upload Started...");
@@ -64,9 +69,11 @@ const Publish = () => {
       },
       (error) => {
         setProgress("Server Error!");
+        setStatus(false);
       },
       () => {
         setProgress("Upload complete. Saving article to database...");
+        setStatus(true);
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           createArticle({ data: { ...values, Image: downloadURL } });
         });
@@ -124,26 +131,10 @@ const Publish = () => {
               }}
               handleChange={handleChange}
             />
-            {/* <div className="group">
-              <label htmlFor="Category" className="publish_label">
-                Select category
-              </label>
-              <select
-                name="Category"
-                id="category"
-                className="input publish_input"
-                required
-                onChange={handleChange}
-              >
-                <option value="">category</option>
-                <option value="lifestyle">lifestyle</option>
-                <option value="food">food</option>
-              </select>
-            </div> */}
             {progress && (
               <p className="text-regular errorMessage">{progress}</p>
             )}
-            <PrimayButton text={"publish article"} />
+            <PrimayButton text={"publish article"} status={status} />
           </form>
         </div>
       </main>
