@@ -3,11 +3,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { publicRequest } from "../utils/apiCalls";
+import { secondary_button } from "../Components/Navbar";
 import ImageModal from "../Components/ImageModal";
 import SecondaryButton from "../Components/SecondaryButton";
-import { secondary_button } from "../Components/Navbar";
 
-const Article = () => {
+const Article = ({ setError }) => {
   const [article, setArticle] = useState();
   const [selectedImage, setSelectedImage] = useState(null);
   const location = useLocation();
@@ -25,7 +25,7 @@ const Article = () => {
       };
       get_article();
     } catch (err) {
-      console.log(err.message);
+      setError(err.response.data);
     }
   }, [id]);
 
@@ -38,10 +38,10 @@ const Article = () => {
       );
       navigate("/articles");
     } catch (err) {
-      console.log(err.message);
+      setError(err.message);
     }
   };
-  // console.log(admin);
+
   return (
     <>
       {selectedImage && (

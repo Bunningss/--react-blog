@@ -12,7 +12,7 @@ import app from "../utils/firebase";
 import FormInput from "../Components/FormInput";
 import PrimayButton from "../Components/PrimayButton";
 
-const Publish = () => {
+const Publish = ({ setError }) => {
   const navigate = useNavigate();
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState("");
@@ -34,8 +34,9 @@ const Publish = () => {
       navigate("/articles");
       setProgress("Article Generated");
     } catch (err) {
+      setProgress("");
       setStatus(false);
-      setProgress(err.response.data);
+      setError(err.response.data);
     }
   };
 
@@ -57,7 +58,8 @@ const Publish = () => {
         setStatus(true);
         switch (snapshot.state) {
           case "paused":
-            setProgress("Upload stopped! Please retry.");
+            setProgress("");
+            setError("Upload stopped! Please retry.");
             setStatus(false);
             break;
           case "running":
@@ -68,7 +70,8 @@ const Publish = () => {
         }
       },
       (error) => {
-        setProgress("Server Error!");
+        setProgress("");
+        setError("Server Error!");
         setStatus(false);
       },
       () => {

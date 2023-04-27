@@ -3,6 +3,7 @@
 :root {
   --primary: #3e3e3e;
   --secondary: grey;
+  --warning-color: rgb(247, 124, 124);
   --body-bg: #ebebeb;
   --content-bg: #ffffff;
   --highlight: red;
