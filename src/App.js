@@ -39,7 +39,9 @@ function App() {
         <Route exact path="*" element={<ComingSoon />} />
         <Route exact path="/" element={<Index />} />
         <Route path="/articles" element={<Articles />} />
-        {!user && <Route path="/account" element={<Account />} />}
+        {!user && (
+          <Route path="/account" element={<Account setError={setError} />} />
+        )}
         <Route
           path="/publish"
           element={

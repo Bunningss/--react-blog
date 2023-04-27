@@ -7,7 +7,7 @@ import FormInput from "../Components/FormInput";
 import PrimayButton from "../Components/PrimayButton";
 import { useNavigate } from "react-router-dom";
 
-const Account = () => {
+const Account = ({ setError }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [values, setValues] = useState({
@@ -17,8 +17,6 @@ const Account = () => {
     ConfirmPassword: "",
   });
   const [status, setStatus] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [registrationErrorMessage, setRegistrationErrorMessage] = useState("");
 
   const registerInputs = [
     {
@@ -42,12 +40,11 @@ const Account = () => {
       maxLength: 80,
     },
     {
-      label: "Enter Your Password",
+      label: "Enter Your Password (Minimum 8 Charaacters)",
       name: "Password",
       type: "password",
       placeholder: "Enter Your Password",
-      errorMessage:
-        "Password must contain at least eight characters, one uppercase letter, one lowercase letter and one number",
+      errorMessage: "Password must be at least 8 characters long",
       required: true,
       minLength: 8,
       maxLength: 256,
@@ -101,7 +98,6 @@ const Account = () => {
     const { Email, Password } = formData;
     dispatch(loginStart());
     try {
-      setErrorMessage("");
       const res = await publicRequest.post("/auth/login", {
         Email,
         Password,
@@ -111,7 +107,7 @@ const Account = () => {
       window.location.reload();
     } catch (err) {
       setStatus(false);
-      setErrorMessage(err.response.data);
+      setError(err.response.data);
       dispatch(loginFailure());
     }
   };
@@ -120,12 +116,11 @@ const Account = () => {
     e.preventDefault();
     setStatus(true);
     try {
-      setRegistrationErrorMessage("");
       await publicRequest.post("/auth/register", values);
       navigate("/");
     } catch (err) {
       setStatus(false);
-      setRegistrationErrorMessage(err.response.data);
+      setError(err.response.data);
     }
   };
 
@@ -139,9 +134,6 @@ const Account = () => {
               {loginInputs.map((input, indx) => (
                 <FormInput key={indx} input={input} />
               ))}
-              {errorMessage && (
-                <p className="text_regular errorMessage">{errorMessage}</p>
-              )}
               <PrimayButton text={"Login"} status={status} />
             </form>
           </div>
@@ -151,11 +143,6 @@ const Account = () => {
               {registerInputs.map((input, indx) => (
                 <FormInput key={indx} input={input} handleChange={onChange} />
               ))}
-              {registrationErrorMessage && (
-                <p className="text_regular errorMessage">
-                  {registrationErrorMessage}
-                </p>
-              )}
               <PrimayButton text={"Register"} status={status} />
             </form>
           </div>
