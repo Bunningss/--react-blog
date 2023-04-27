@@ -104,7 +104,7 @@ const Publish = ({ setError }) => {
             <FormInput
               input={{
                 name: "Title",
-                placeholder: "Enter Article Title",
+                placeholder: "Enter Article Title (Min 15 characters)",
                 errorMessage: "Article title is required",
                 required: true,
                 label: "Enter a title",
@@ -116,7 +116,7 @@ const Publish = ({ setError }) => {
                 name: "Article",
                 cols: "30",
                 rows: "10",
-                placeholder: "Enter Article",
+                placeholder: "Enter Article (Min 15 characters)",
                 label: "Enter article",
                 required: true,
                 errorMessage: "Article Description is required",
