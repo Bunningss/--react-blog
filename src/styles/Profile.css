@@ -1,0 +1,12 @@
+.profile {
+  display: flex;
+}
+
+.profile .col:nth-child(1) {
+  flex: 1;
+  border-right: 1px solid var(--primary);
+}
+
+.profile .col:nth-child(2) {
+  flex: 5;
+}

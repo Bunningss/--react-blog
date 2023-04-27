@@ -15,6 +15,7 @@ import Articles from "./Pages/articles";
 import Account from "./Pages/account";
 import Publish from "./Pages/publish";
 import Article from "./Pages/article";
+import Profile from "./Pages/profile";
 
 function App() {
   const [error, setError] = useState("");
@@ -38,6 +39,11 @@ function App() {
       <Routes>
         <Route exact path="*" element={<ComingSoon />} />
         <Route exact path="/" element={<Index />} />
+        <Route
+          exact
+          path="/profile"
+          element={<Profile setError={setError} />}
+        />
         <Route path="/articles" element={<Articles />} />
         {!user && (
           <Route path="/account" element={<Account setError={setError} />} />

@@ -20,13 +20,14 @@ const Article = ({ setError }) => {
   useEffect(() => {
     try {
       const get_article = async () => {
-        const res = await publicRequest.get(`/articles/${id}`);
+        const res = await publicRequest.get(`/articles/article/${id}`);
         setArticle(res.data);
       };
       get_article();
     } catch (err) {
       setError(err.response.data);
     }
+    // eslint-disable-next-line
   }, [id]);
 
   const handleDelete = async (e) => {
