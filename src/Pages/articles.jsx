@@ -17,7 +17,7 @@ const Articles = () => {
   return (
     <>
       <main className="gallery default_padding">
-        <ul className="gallery__list">
+        <ul className="gallery_list">
           {articles.map((article, indx) => (
             <GalleryItem article={article} key={indx} />
           ))}

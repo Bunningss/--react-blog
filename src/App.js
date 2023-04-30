@@ -37,10 +37,12 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <Suspense fallback={<div>...</div>}>
+      <Suspense fallback={<Preloader />}>
         <Menu />
       </Suspense>
-      {error && <Popup error={error} />}
+      <Suspense fallback={<Preloader />}>
+        {error && <Popup error={error} />}
+      </Suspense>
       <Routes>
         <Route
           exact

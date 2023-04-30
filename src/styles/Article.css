@@ -41,6 +41,22 @@
   padding: 20px 0 5px 0;
 }
 
+.post .post_wrapper .post_actual .col .article_tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.post .post_wrapper .post_actual .col .article_tags .tag {
+  background-color: var(--primary);
+  width: fit-content;
+  color: var(--content-bg);
+  text-transform: capitalize;
+  font-size: 14px;
+  padding: 2px;
+  border-radius: 1px;
+}
+
 .post .post_wrapper .post_actual .col .post_refs {
   display: flex;
   align-items: center;

@@ -63,6 +63,13 @@ const Article = ({ setError }) => {
             <div className="col"></div>
             <div className="col">
               <h2 className="header post_header">{article?.Title}</h2>
+              <div className="article_tags">
+                {article?.Tags?.map((tag, indx) => (
+                  <span className="tag" key={indx}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
               <div className="post_refs">
                 <span>
                   Posted by {article?.AuthorName} on{" "}

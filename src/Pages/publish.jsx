@@ -20,7 +20,7 @@ const Publish = ({ setError }) => {
   const [values, setValues] = useState({
     Title: "",
     Article: "",
-    Category: "",
+    Tags: [],
   });
 
   const handleChange = (e) => {
@@ -78,7 +78,14 @@ const Publish = ({ setError }) => {
         setProgress("Upload complete. Saving article to database...");
         setStatus(true);
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          createArticle({ data: { ...values, Image: downloadURL } });
+          createArticle({
+            data: {
+              Title: values.Title,
+              Article: values.Article,
+              Tags: values.Tags?.split(","),
+              Image: downloadURL,
+            },
+          });
         });
       }
     );
@@ -104,7 +111,7 @@ const Publish = ({ setError }) => {
             <FormInput
               input={{
                 name: "Title",
-                placeholder: "Enter Article Title (Min 15 characters)",
+                placeholder: "Enter Article Title (Min 5 characters)",
                 errorMessage: "Article title is required",
                 required: true,
                 label: "Enter a title",
@@ -126,11 +133,12 @@ const Publish = ({ setError }) => {
             />
             <FormInput
               input={{
-                name: "Category",
-                placeholder: "Choose a category. e.g: Food, Lifestyle, Travel",
+                name: "Tags",
+                placeholder: "e.g: Food, Lifestyle, Travel",
                 required: true,
-                errorMessage: "Article Category is required",
-                label: "Select a category",
+                errorMessage: "Article Tag is required",
+                label:
+                  "Enter article tags (Enter multiple tags separated by commas)",
               }}
               handleChange={handleChange}
             />

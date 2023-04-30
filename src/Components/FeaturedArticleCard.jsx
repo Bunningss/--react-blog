@@ -12,7 +12,13 @@ const FeaturedArticleCard = ({ article }) => {
         />
       </div>
       <div className="col">
-        <p className="item_tag">japanese food</p>
+        <div className="item_tags">
+          {article?.Tags?.map((tag, indx) => (
+            <p className="item_tag" key={indx}>
+              {tag}
+            </p>
+          ))}
+        </div>
         <h2 className="header item_title">{article?.Title}</h2>
         <p className="item_rating">rating: 4.92</p>
       </div>

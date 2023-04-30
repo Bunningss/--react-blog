@@ -9,7 +9,7 @@
   overflow: hidden;
   position: fixed;
   top: 0;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   z-index: 12;
 }
@@ -46,7 +46,7 @@
 
 .spinner:after {
   content: "";
-  background: #000;
+  background: var(--primary);
   border-radius: 50%;
   height: 24px;
   width: 24px;
@@ -65,7 +65,7 @@
 
 .spans:after {
   content: "";
-  background: #000;
+  background: var(--primary);
   height: 13px;
   width: 13px;
   position: absolute;
@@ -78,7 +78,7 @@
 
 .spans:before {
   content: "";
-  background: #000;
+  background: var(--primary);
   height: 10px;
   width: 10px;
   position: absolute;

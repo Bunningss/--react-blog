@@ -23,13 +23,20 @@
   transition: all 1s ease;
 }
 
-.featured_article_card .col .item_tag {
+.featured_article_card .col .item_tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.featured_article_card .col .item_tags .item_tag {
   background-color: var(--primary);
   width: fit-content;
   color: var(--content-bg);
   text-transform: capitalize;
   font-size: 14px;
   padding: 2px;
+  border-radius: 1px;
 }
 
 .featured_article_card .col .item_title {
