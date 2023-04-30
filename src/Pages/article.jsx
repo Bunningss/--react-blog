@@ -1,5 +1,5 @@
 import "../styles/Article.css";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { publicRequest } from "../utils/apiCalls";
@@ -39,7 +39,7 @@ const Article = ({ setError }) => {
       );
       navigate("/articles");
     } catch (err) {
-      setError(err.message);
+      setError(err.response.data);
     }
   };
 
@@ -64,12 +64,12 @@ const Article = ({ setError }) => {
             <div className="col">
               <h2 className="header post_header">{article?.Title}</h2>
               <div className="post_refs">
-                <Link to="/">{article?.Category}</Link>
-                <Link to="">{article?.AuthorName}</Link>
-                <span>{new Date(article?.createdAt).toDateString()}</span>
+                <span>
+                  Posted by {article?.AuthorName} on{" "}
+                  {new Date(article?.createdAt).toDateString()}
+                </span>
                 {userName === article?.AuthorName || admin ? (
                   <>
-                    {/* <span>...</span> */}
                     <SecondaryButton
                       text={"modify"}
                       btn_styles={{

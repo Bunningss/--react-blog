@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { publicRequest } from "../utils/apiCalls";
 import { useEffect, useState } from "react";
 import arrow from "../Images/icons/arrow.webp";
-import ArticleCard from "./ArticleCard";
+import FeaturedArticleCard from "./FeaturedArticleCard";
 
 const Featured = () => {
   const [featured, setFeatured] = useState([]);
@@ -35,7 +35,7 @@ const Featured = () => {
       </div>
       <div className="posts default_padding">
         {featured.map((article, indx) => (
-          <ArticleCard key={indx} article={article} />
+          <FeaturedArticleCard article={article} key={indx} />
         ))}
       </div>
     </div>

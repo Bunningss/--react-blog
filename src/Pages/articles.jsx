@@ -1,10 +1,11 @@
 import "../styles/Articles.css";
 import { useEffect, useState } from "react";
 import { publicRequest } from "../utils/apiCalls";
-import ArticleCard from "../Components/ArticleCard";
+import GalleryItem from "../Components/GalleryItem";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
+
   useEffect(() => {
     const getArticles = async () => {
       const res = await publicRequest.get("/articles");
@@ -12,15 +13,15 @@ const Articles = () => {
     };
     getArticles();
   }, []);
+
   return (
     <>
-      <main className="default_padding fade_in all_posts">
-        <div className="wrapper">
-          {/* All Posts */}
+      <main className="gallery default_padding">
+        <ul className="gallery__list">
           {articles.map((article, indx) => (
-            <ArticleCard key={indx} article={article} />
+            <GalleryItem article={article} key={indx} />
           ))}
-        </div>
+        </ul>
       </main>
     </>
   );

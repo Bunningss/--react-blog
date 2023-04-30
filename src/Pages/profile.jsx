@@ -1,8 +1,9 @@
 import "../styles/Profile.css";
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
+import Preloader from "../Components/Preloader";
 import ProfileMenu from "../Components/ProfileMenu";
-import ProfileArticles from "../Components/ProfileArticles";
-import ProfileSettings from "../Components/ProfileSettings";
+const ProfileSettings = lazy(() => import("../Components/ProfileSettings"));
+const ProfileArticles = lazy(() => import("../Components/ProfileArticles"));
 
 const Profile = ({ setError }) => {
   const [selected, setSelected] = useState("Profile Settings");
@@ -10,13 +11,17 @@ const Profile = ({ setError }) => {
   return (
     <div className="profile fade_in">
       <div className="col">
-        <ProfileMenu setSelected={setSelected} />
+        <ProfileMenu selected={selected} setSelected={setSelected} />
       </div>
       <div className="col default_padding">
         {selected === "Profile Settings" ? (
-          <ProfileSettings setError={setError} />
+          <Suspense fallback={<Preloader />}>
+            <ProfileSettings setError={setError} />
+          </Suspense>
         ) : selected === "My Articles" ? (
-          <ProfileArticles setError={setError} />
+          <Suspense fallback={<Preloader />}>
+            <ProfileArticles setError={setError} />
+          </Suspense>
         ) : null}
       </div>
     </div>

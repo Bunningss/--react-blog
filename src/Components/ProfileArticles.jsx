@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { publicRequest } from "../utils/apiCalls";
+import ProfileArticleCard from "./ProfileArticleCard";
 
 const ProfileArticles = ({ setError }) => {
   const [articles, setArticles] = useState([]);
@@ -20,8 +21,14 @@ const ProfileArticles = ({ setError }) => {
     getArticles();
     // eslint-disable-next-line
   }, []);
-  console.log(articles);
-  return <div className="fade_in">ProfileArticles</div>;
+
+  return (
+    <div className="fade_in">
+      {articles.map((item, indx) => (
+        <ProfileArticleCard article={item} key={indx} />
+      ))}
+    </div>
+  );
 };
 
 export default ProfileArticles;

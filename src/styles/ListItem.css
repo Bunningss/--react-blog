@@ -1,3 +1,7 @@
 .listItem {
   text-transform: capitalize;
 }
+
+.listItem.active {
+  background-color: var(--content-bg);
+}

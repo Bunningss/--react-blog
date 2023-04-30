@@ -42,13 +42,6 @@
   transform: rotate(90deg);
 }
 
-.featured .posts {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-  margin: 15px 0;
-}
-
 @media screen and (max-width: 600px) {
   .featured .heading .col:nth-child(1),
   .featured .heading .col:nth-child(3) {

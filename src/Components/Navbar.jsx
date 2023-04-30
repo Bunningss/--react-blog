@@ -29,7 +29,7 @@ export const secondary_button = {
 const Navbar = ({ active, setActive }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user?.currentUser);
+  const user = useSelector((state) => state.user?.currentUser?.userData);
 
   // End session
   const handleLogout = () => {

@@ -1,21 +1,24 @@
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Components
 import Navbar from "./Components/Navbar";
-import ComingSoon from "./Components/ComingSoon";
-import AuthenticationError from "./Components/AuthenticationError";
-import Menu from "./Components/Menu";
-import Popup from "./Components/Popup.jsx";
+import Preloader from "./Components/Preloader";
+const ComingSoon = lazy(() => import("./Components/ComingSoon"));
+const AuthenticationError = lazy(() =>
+  import("./Components/AuthenticationError")
+);
+const Menu = lazy(() => import("./Components/Menu"));
+const Popup = lazy(() => import("./Components/Popup.jsx"));
 
 // Pages
-import Index from "./Pages/index";
-import Articles from "./Pages/articles";
-import Account from "./Pages/account";
-import Publish from "./Pages/publish";
-import Article from "./Pages/article";
-import Profile from "./Pages/profile";
+const Index = lazy(() => import("./Pages/index"));
+const Account = lazy(() => import("./Pages/account"));
+const Publish = lazy(() => import("./Pages/publish"));
+const Articles = lazy(() => import("./Pages/articles"));
+const Article = lazy(() => import("./Pages/article"));
+const Profile = lazy(() => import("./Pages/profile"));
 
 function App() {
   const [error, setError] = useState("");
@@ -34,27 +37,72 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <Menu />
+      <Suspense fallback={<div>...</div>}>
+        <Menu />
+      </Suspense>
       {error && <Popup error={error} />}
       <Routes>
-        <Route exact path="*" element={<ComingSoon />} />
-        <Route exact path="/" element={<Index />} />
+        <Route
+          exact
+          path="*"
+          element={
+            <Suspense fallback={<Preloader />}>
+              <ComingSoon />
+            </Suspense>
+          }
+        />
+        <Route
+          exact
+          path="/"
+          element={
+            <Suspense fallback={<Preloader />}>
+              <Index />
+            </Suspense>
+          }
+        />
         <Route
           exact
           path="/profile"
-          element={<Profile setError={setError} />}
+          element={
+            <Suspense fallback={<Preloader />}>
+              <Profile setError={setError} />
+            </Suspense>
+          }
         />
-        <Route path="/articles" element={<Articles />} />
+        <Route
+          path="/articles"
+          element={
+            <Suspense fallback={<Preloader />}>
+              <Articles />
+            </Suspense>
+          }
+        />
         {!user && (
-          <Route path="/account" element={<Account setError={setError} />} />
+          <Route
+            path="/account"
+            element={
+              <Suspense fallback={<Preloader />}>
+                <Account setError={setError} />
+              </Suspense>
+            }
+          />
         )}
         <Route
           path="/publish"
           element={
-            user ? <Publish setError={setError} /> : <AuthenticationError />
+            <Suspense fallback={<Preloader />}>
+              {user ? <Publish setError={setError} /> : <AuthenticationError />}
+            </Suspense>
           }
         />
-        <Route path="/article/:id" element={<Article setError={setError} />} />
+        <Route
+          path="/article/:id"
+          element={
+            <Suspense fallback={<Preloader />}>
+              <Article setError={setError} />
+            </Suspense>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

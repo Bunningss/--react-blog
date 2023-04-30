@@ -19,6 +19,7 @@ const verifySession = () => {
     const expiry = exp * 1000 - 60000;
     if (Date.now() > expiry) {
       localStorage.clear();
+      window.location.reload();
     }
   } else return;
 };
